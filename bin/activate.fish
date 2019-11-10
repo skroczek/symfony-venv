@@ -3,12 +3,10 @@
 
 function deactivate  -d "Exit virtualenv and return to normal shell environment"
     # reset old environment variables
-    if [ -n "${_OLD_VIRTUAL_PATH:-}" ] ; then
-        PATH="${_OLD_VIRTUAL_PATH:-}"
-        export PATH
-        unset _OLD_VIRTUAL_PATH
+    if test -n "$_OLD_VIRTUAL_PATH"
+        set -gx PATH $_OLD_VIRTUAL_PATH
+        set -e _OLD_VIRTUAL_PATH
     end
-
     if test -n "$_OLD_FISH_PROMPT_OVERRIDE"
         functions -e fish_prompt
         set -e _OLD_FISH_PROMPT_OVERRIDE
