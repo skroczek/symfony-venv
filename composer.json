@@ -1,5 +1,5 @@
 {
-    "name": "skroczek/symfony-venv",
+    "name": "sk/symfony-venv",
     "description": "Creates a virtual environment for easily calling console binary plus some shortcuts.",
     "license": "MIT",
     "authors": [
