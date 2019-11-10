@@ -31,7 +31,7 @@ In your project root dir run:
 $ . vendor/bin/activate
 ```
 
-#### Fishshell
+#### Fish shell
 
 ```
 $ . vendor/bin/activate.fish
