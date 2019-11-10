@@ -7,7 +7,7 @@ function deactivate  -d "Exit virtualenv and return to normal shell environment"
         PATH="${_OLD_VIRTUAL_PATH:-}"
         export PATH
         unset _OLD_VIRTUAL_PATH
-    fi
+    end
 
     if test -n "$_OLD_FISH_PROMPT_OVERRIDE"
         functions -e fish_prompt
