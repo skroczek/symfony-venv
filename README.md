@@ -19,7 +19,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require sksymfony-venv
+$ composer require sk/symfony-venv
 ```
 
 ### Step 2: Activate virtual environment
