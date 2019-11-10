@@ -1,6 +1,6 @@
 Highly inspired by the python virtualenv activate scripts.
 
-[symfony-venv]: symfony-venv.png
+![symfony-venv](symfony-venv.png)
 
 Installation
 ============
