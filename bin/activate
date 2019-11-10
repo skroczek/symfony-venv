@@ -45,6 +45,14 @@ PATH="$VIRTUAL_SYMFONY/bin:$PATH"
 export PATH
 
 
+if [ -x "$(command -v symfony-autocomplete)" ]; then
+    _OLD_SHELL="$SHELL"
+    SHELL="bash"
+    eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/bin/console)"
+    SHELL="$_OLD_SHELL"
+fi
+
+
 if [ -z "${VIRTUAL_SYMFONY_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
 

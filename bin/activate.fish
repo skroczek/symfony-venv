@@ -36,6 +36,9 @@ set -gx VIRTUAL_SYMFONY (pwd)
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_SYMFONY/bin" $PATH
 
+if type -q symfony-autocomplete
+    symfony-autocomplete "$VIRTUAL_SYMFONY/bin/console" | source
+end
 
 if test -z "$VIRTUAL_SYMFONY_DISABLE_PROMPT"
     # fish uses a function instead of an env var to generate the prompt.
