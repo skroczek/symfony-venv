@@ -1,0 +1,16 @@
+{
+    "name": "skroczek/symfony-venv",
+    "description": "Creates a virtual environment for easily calling console binary plus some shortcuts.",
+    "type": "dx",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Kroczek",
+            "email": "me@xbug.de"
+        }
+    ],
+    "bin": [
+        "bin/activate",
+        "bin/activate.fish"
+    ]
+}
