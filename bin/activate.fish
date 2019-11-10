@@ -2,6 +2,12 @@
 # you cannot run it directly
 
 function deactivate  -d "Exit virtualenv and return to normal shell environment"
+    # reset old environment variables
+    if [ -n "${_OLD_VIRTUAL_PATH:-}" ] ; then
+        PATH="${_OLD_VIRTUAL_PATH:-}"
+        export PATH
+        unset _OLD_VIRTUAL_PATH
+    fi
 
     if test -n "$_OLD_FISH_PROMPT_OVERRIDE"
         functions -e fish_prompt
@@ -17,15 +23,6 @@ function deactivate  -d "Exit virtualenv and return to normal shell environment"
     end
 end
 
-function console --description 'Run bin/console relative to the current dir. If not found it shows an error message'
-  if test ! -f "$VIRTUAL_SYMFONY/bin/console"
-    echo "Console not found! You are not in an project root, or the console is not located under bin/console." 1>&2
-    return 1
-  end
-  echo $argv
-  eval command "$VIRTUAL_SYMFONY/bin/console" $argv
-end
-
 function doctrine --description 'Run bin/console doctrine relative to the current dir. The first argument is prepended with "doctrine:", so "doctrine schema:update --dump-sql" will be executed as "bin/console doctrine:schema:update --dump-sql".'
   console doctrine:"$argv"
 end
@@ -36,8 +33,8 @@ deactivate nondestructive
 
 set -gx VIRTUAL_SYMFONY (pwd)
 
-# set -gx _OLD_VIRTUAL_PATH $PATH
-# set -gx PATH "$VIRTUAL_SYMFONY" $PATH
+set -gx _OLD_VIRTUAL_PATH $PATH
+set -gx PATH "$VIRTUAL_SYMFONY/bin" $PATH
 
 
 if test -z "$VIRTUAL_SYMFONY_DISABLE_PROMPT"
