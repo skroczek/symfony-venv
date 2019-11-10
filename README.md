@@ -37,6 +37,14 @@ $ . vendor/bin/activate
 $ . vendor/bin/activate.fish
 ```
 
+### Last Step: Deactivate virtual environment
+
+To deactivate the virtual environment all you have to do is to deactivate it:
+
+```
+$ deactivate
+```
+
 Autocompletion for console
 --------------------------
 
