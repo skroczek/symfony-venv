@@ -1,4 +1,5 @@
 Highly inspired by the python virtualenv activate scripts.
+Currently tested for bash, fish-shell and z-shell.
 
 ![symfony-venv](symfony-venv.png)
 
@@ -25,7 +26,7 @@ $ composer require skroczek/symfony-venv
 
 In your project root dir run:
 
-#### Bash
+#### Bash / Z-Shell
 
 ```
 $ . vendor/bin/activate
@@ -36,6 +37,32 @@ $ . vendor/bin/activate
 ```
 $ . vendor/bin/activate.fish
 ```
+### Step 3: Use it
+
+You are now able to call the `console` and other scripts located under your projects /bin
+directory from everywhere. If you additionaly installed [symfony-console-autocomplete](https://github.com/bamarni/symfony-console-autocomplete)
+globally the autocompletion for the console should work too.
+ ```
+(website-api) ~/P/website-api$ console <TAB><TAB>
+about                                   debug:translation                       doctrine:mapping:import                 help                                    make:twig-extension
+api:json-schema:generate                debug:twig                              doctrine:mapping:info                   lint:twig                               make:unit-test
+api:openapi:export                      doctrine:cache:clear-collection-region  doctrine:migrations:diff                lint:xliff                              make:user
+assets:install                          doctrine:cache:clear-entity-region      doctrine:migrations:dump-schema         lint:yaml                               make:validator
+cache:clear                             doctrine:cache:clear-metadata           doctrine:migrations:execute             list                                    make:voter
+cache:pool:clear                        doctrine:cache:clear-query              doctrine:migrations:generate            make:auth                               router:match
+cache:pool:delete                       doctrine:cache:clear-query-region       doctrine:migrations:latest              make:command                            security:encode-password
+cache:pool:list                         doctrine:cache:clear-result             doctrine:migrations:migrate             make:controller                         server:dump
+cache:pool:prune                        doctrine:cache:contains                 doctrine:migrations:rollup              make:crud                               server:log
+cache:warmup                            doctrine:cache:delete                   doctrine:migrations:status              make:entity                             server:run
+config:dump-reference                   doctrine:cache:flush                    doctrine:migrations:up-to-date          make:fixtures                           server:start
+debug:autowiring                        doctrine:cache:stats                    doctrine:migrations:version             make:form                               server:status
+debug:config                            doctrine:database:create                doctrine:query:dql                      make:functional-test                    server:stop
+debug:container                         doctrine:database:drop                  doctrine:query:sql                      make:migration                          swiftmailer:email:send
+debug:event-dispatcher                  doctrine:database:import                doctrine:schema:create                  make:registration-form                  swiftmailer:spool:send
+debug:form                              doctrine:ensure-production-settings     doctrine:schema:drop                    make:serializer:encoder                 translation:update
+debug:router                            doctrine:generate:entities              doctrine:schema:update                  make:serializer:normalizer              
+debug:swiftmailer                       doctrine:mapping:convert                doctrine:schema:validate                make:subscriber    
+ ```
 
 ### Last Step: Deactivate virtual environment
 
