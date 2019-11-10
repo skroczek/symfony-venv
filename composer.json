@@ -11,5 +11,8 @@
     "bin": [
         "bin/activate",
         "bin/activate.fish"
-    ]
+    ],
+    "suggest": {
+        "bamarni/symfony-console-autocomplete": "Adds shell completion for Symfony Console based scripts"
+    }
 }
