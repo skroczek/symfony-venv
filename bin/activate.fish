@@ -17,14 +17,9 @@ function deactivate  -d "Exit virtualenv and return to normal shell environment"
     set -e VIRTUAL_SYMFONY
     if test "$argv[1]" != "nondestructive"
         # Self destruct!
-        functions -e deactivate console doctrine
+        functions -e deactivate console doctrine artisan
     end
 end
-
-function doctrine --description 'Run bin/console doctrine relative to the current dir. The first argument is prepended with "doctrine:", so "doctrine schema:update --dump-sql" will be executed as "bin/console doctrine:schema:update --dump-sql".'
-  console doctrine:"$argv"
-end
-
 
 # unset irrelevant variables
 deactivate nondestructive
@@ -32,11 +27,23 @@ deactivate nondestructive
 set -gx VIRTUAL_SYMFONY (pwd)
 
 set -gx _OLD_VIRTUAL_PATH $PATH
-set -gx PATH "$VIRTUAL_SYMFONY/bin" $PATH
-
-if type -q symfony-autocomplete
-    symfony-autocomplete "$VIRTUAL_SYMFONY/bin/console" | source
+if test -d "$VIRTUAL_SYMFONY/bin"
+    set -gx PATH "$VIRTUAL_SYMFONY/bin" $PATH
+    if type -q symfony-autocomplete
+        symfony-autocomplete "$VIRTUAL_SYMFONY/bin/console" | source
+    end
 end
+
+if type -q "$VIRTUAL_SYMFONY/artisan"
+    function artisan --description 'Run artisan.'
+      $VIRTUAL_SYMFONY/artisan "$argv"
+    end
+    if type -q symfony-autocomplete
+        symfony-autocomplete "$VIRTUAL_SYMFONY/artisan" | source
+    end
+end
+
+
 
 if test -z "$VIRTUAL_SYMFONY_DISABLE_PROMPT"
     # fish uses a function instead of an env var to generate the prompt.

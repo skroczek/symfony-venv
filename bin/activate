@@ -27,6 +27,7 @@ deactivate () {
     # Self destruct!
         unset -f deactivate
         unset -f doctrine
+        unset -f artisan
     fi
 }
 
@@ -41,17 +42,22 @@ VIRTUAL_SYMFONY=$(pwd)
 export VIRTUAL_SYMFONY
 
 _OLD_VIRTUAL_PATH="$PATH"
-PATH="$VIRTUAL_SYMFONY/bin:$PATH"
-export PATH
-
-
-if [ -x "$(command -v symfony-autocomplete)" ]; then
-    _OLD_SHELL="$SHELL"
-    SHELL="bash"
-    eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/bin/console)"
-    SHELL="$_OLD_SHELL"
+if [ -d "$VIRTUAL_SYMFONY/bin" ]; then
+    PATH="$VIRTUAL_SYMFONY/bin:$PATH"
+    export PATH
+    if [ -x "$(command -v symfony-autocomplete)" ]; then
+        eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/bin/console)"
+    fi
 fi
 
+if [ -x "$VIRTUAL_SYMFONY/artisan" ]; then
+    artisan () {
+        $VIRTUAL_SYMFONY/artisan "$@"
+    }
+    if [ -x "$(command -v symfony-autocomplete)" ]; then
+        eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/artisan)"
+    fi
+fi
 
 if [ -z "${VIRTUAL_SYMFONY_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"

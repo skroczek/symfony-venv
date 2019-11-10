@@ -1,5 +1,4 @@
-Highly inspired by the python virtualenv activate scripts.
-Currently tested for bash, fish-shell and z-shell.
+Create a vritual env for [Symfony](https://symfony.com/) and [Laravel](https://laravel.com/) projects. Highly inspired by the python virtualenv activate scripts, currently tested for bash, fish-shell and z-shell.
 
 ![symfony-venv](symfony-venv.png)
 
@@ -43,7 +42,8 @@ You are now able to call the `console` and other scripts located under your proj
 directory from everywhere. If you additionaly installed [symfony-console-autocomplete](https://github.com/bamarni/symfony-console-autocomplete)
 globally the autocompletion for the console should work too.
  ```
-(website-api) ~/P/website-api$ console <TAB><TAB>
+~/P/website-api $ . vendor/bin/activate
+(website-api) ~/P/website-api $ console <TAB><TAB>
 about                                   debug:translation                       doctrine:mapping:import                 help                                    make:twig-extension
 api:json-schema:generate                debug:twig                              doctrine:mapping:info                   lint:twig                               make:unit-test
 api:openapi:export                      doctrine:cache:clear-collection-region  doctrine:migrations:diff                lint:xliff                              make:user
@@ -63,6 +63,19 @@ debug:form                              doctrine:ensure-production-settings     
 debug:router                            doctrine:generate:entities              doctrine:schema:update                  make:serializer:normalizer              
 debug:swiftmailer                       doctrine:mapping:convert                doctrine:schema:validate                make:subscriber    
  ```
+
+or Laravel
+```
+~/P/blog $ . vendor/bin/activate
+(blog) ~/P/blog$ artisan <TAB><TAB>
+app:name             config:clear         event:generate       make:channel         make:listener        make:policy          migrate              notifications:table  queue:flush          route:cache          storage:link
+auth:clear-resets    db:seed              event:list           make:command         make:mail            make:provider        migrate:fresh        optimize             queue:forget         route:clear          tinker
+cache:clear          down                 help                 make:controller      make:middleware      make:request         migrate:install      optimize:clear       queue:listen         route:list           up
+cache:forget         dump-server          inspire              make:event           make:migration       make:resource        migrate:refresh      package:discover     queue:restart        schedule:finish      vendor:publish
+cache:table          env                  key:generate         make:exception       make:model           make:rule            migrate:reset        preset               queue:retry          schedule:run         view:cache
+clear-compiled       event:cache          list                 make:factory         make:notification    make:seeder          migrate:rollback     queue:failed         queue:table          serve                view:clear
+config:cache         event:clear          make:auth            make:job             make:observer        make:test            migrate:status       queue:failed-table   queue:work           session:table  
+```
 
 ### Last Step: Deactivate virtual environment
 
