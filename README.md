@@ -77,6 +77,17 @@ clear-compiled       event:cache          list                 make:factory     
 config:cache         event:clear          make:auth            make:job             make:observer        make:test            migrate:status       queue:failed-table   queue:work           session:table  
 ```
 
+### Change environment
+
+The command `e` set the APP_ENV environment variable. For older symfony installations, the SYMFONY_ENV is also set.
+On activation the variable is initial set to `dev` on symfony, or `local` for laravel. The vars are not unset on
+deactivation.
+
+```
+website-api (dev) ~/P/website-api $ e prod
+website-api (prod) ~/P/website-api $
+```
+
 ### Last Step: Deactivate virtual environment
 
 To deactivate the virtual environment all you have to do is to deactivate it:
