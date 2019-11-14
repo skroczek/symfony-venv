@@ -55,12 +55,10 @@ _OLD_VIRTUAL_PATH="$PATH"
 if [[ -d "$VIRTUAL_SYMFONY/bin" ]]; then
     PATH="$VIRTUAL_SYMFONY/bin:$PATH"
     export PATH
-    if [[ -z "$APP_ENV" ]]; then
-        APP_ENV="dev"
-        SYMFONY_ENV="dev"
-        export APP_ENV
-        export SYMFONY_ENV
-    fi
+    APP_ENV="dev"
+    SYMFONY_ENV="dev"
+    export APP_ENV
+    export SYMFONY_ENV
     if [[ -x "$(command -v symfony-autocomplete)" ]]; then
         eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/bin/console)"
     fi
@@ -70,6 +68,8 @@ if [ -x "$VIRTUAL_SYMFONY/artisan" ]; then
     artisan () {
         $VIRTUAL_SYMFONY/artisan "$@"
     }
+    APP_ENV="local"
+    export APP_ENV
     if [ -x "$(command -v symfony-autocomplete)" ]; then
         eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/artisan)"
     fi

@@ -43,7 +43,7 @@ directory from everywhere. If you additionaly installed [symfony-console-autocom
 globally the autocompletion for the console should work too.
  ```
 ~/P/website-api $ . vendor/bin/activate
-(website-api) ~/P/website-api $ console <TAB><TAB>
+website-api (dev) ~/P/website-api $ console <TAB><TAB>
 about                                   debug:translation                       doctrine:mapping:import                 help                                    make:twig-extension
 api:json-schema:generate                debug:twig                              doctrine:mapping:info                   lint:twig                               make:unit-test
 api:openapi:export                      doctrine:cache:clear-collection-region  doctrine:migrations:diff                lint:xliff                              make:user
@@ -67,7 +67,7 @@ debug:swiftmailer                       doctrine:mapping:convert                
 or Laravel
 ```
 ~/P/blog $ . vendor/bin/activate
-(blog) ~/P/blog$ artisan <TAB><TAB>
+blog (local) ~/P/blog$ artisan <TAB><TAB>
 app:name             config:clear         event:generate       make:channel         make:listener        make:policy          migrate              notifications:table  queue:flush          route:cache          storage:link
 auth:clear-resets    db:seed              event:list           make:command         make:mail            make:provider        migrate:fresh        optimize             queue:forget         route:clear          tinker
 cache:clear          down                 help                 make:controller      make:middleware      make:request         migrate:install      optimize:clear       queue:listen         route:list           up

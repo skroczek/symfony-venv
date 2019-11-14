@@ -36,10 +36,8 @@ set -gx VIRTUAL_SYMFONY (pwd)
 set -gx _OLD_VIRTUAL_PATH $PATH
 if test -d "$VIRTUAL_SYMFONY/bin"
     set -gx PATH "$VIRTUAL_SYMFONY/bin" $PATH
-    if test -z "$APP_ENV"
-        set -gx APP_ENV "dev"
-        set -gx SYMFONY_ENV "dev"
-    end
+    set -gx APP_ENV "dev"
+    set -gx SYMFONY_ENV "dev"
     if type -q symfony-autocomplete
         symfony-autocomplete "$VIRTUAL_SYMFONY/bin/console" | source
     end
@@ -49,6 +47,7 @@ if type -q "$VIRTUAL_SYMFONY/artisan"
     function artisan --description 'Run artisan.'
       $VIRTUAL_SYMFONY/artisan "$argv"
     end
+    set -gx APP_ENV "local"
     if type -q symfony-autocomplete
         symfony-autocomplete "$VIRTUAL_SYMFONY/artisan" | source
     end
