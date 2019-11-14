@@ -28,11 +28,21 @@ deactivate () {
         unset -f deactivate
         unset -f doctrine
         unset -f artisan
+        unset -f e
     fi
 }
 
 doctrine () {
     $VIRTUAL_SYMFONY/bin/console doctrine:"$@"
+}
+
+e () {
+    if [[ -n "$APP_ENV" ]]; then
+        APP_ENV="$1"
+        SYMFONY_ENV="$1"
+        export APP_ENV
+        export SYMFONY_ENV
+    fi
 }
 
 # unset irrelevant variables
@@ -42,10 +52,16 @@ VIRTUAL_SYMFONY=$(pwd)
 export VIRTUAL_SYMFONY
 
 _OLD_VIRTUAL_PATH="$PATH"
-if [ -d "$VIRTUAL_SYMFONY/bin" ]; then
+if [[ -d "$VIRTUAL_SYMFONY/bin" ]]; then
     PATH="$VIRTUAL_SYMFONY/bin:$PATH"
     export PATH
-    if [ -x "$(command -v symfony-autocomplete)" ]; then
+    if [[ -z "$APP_ENV" ]]; then
+        APP_ENV="dev"
+        SYMFONY_ENV="dev"
+        export APP_ENV
+        export SYMFONY_ENV
+    fi
+    if [[ -x "$(command -v symfony-autocomplete)" ]]; then
         eval "$(symfony-autocomplete $VIRTUAL_SYMFONY/bin/console)"
     fi
 fi
@@ -62,7 +78,7 @@ fi
 if [ -z "${VIRTUAL_SYMFONY_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
 
-	PS1="(`basename \"$VIRTUAL_SYMFONY\"`) ${PS1:-}"
+	PS1="`basename \"$VIRTUAL_SYMFONY\"` (\$APP_ENV) ${PS1:-}"
 
     export PS1
 fi

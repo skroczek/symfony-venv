@@ -17,7 +17,14 @@ function deactivate  -d "Exit virtualenv and return to normal shell environment"
     set -e VIRTUAL_SYMFONY
     if test "$argv[1]" != "nondestructive"
         # Self destruct!
-        functions -e deactivate console doctrine artisan
+        functions -e deactivate console doctrine artisan e
+    end
+end
+
+function e  -d "Set application environment"
+    if test -n "$APP_ENV"
+        set -gx APP_ENV "$argv[1]"
+        set -gx SYMFONY_ENV "$argv[1]"
     end
 end
 
@@ -29,6 +36,10 @@ set -gx VIRTUAL_SYMFONY (pwd)
 set -gx _OLD_VIRTUAL_PATH $PATH
 if test -d "$VIRTUAL_SYMFONY/bin"
     set -gx PATH "$VIRTUAL_SYMFONY/bin" $PATH
+    if test -z "$APP_ENV"
+        set -gx APP_ENV "dev"
+        set -gx SYMFONY_ENV "dev"
+    end
     if type -q symfony-autocomplete
         symfony-autocomplete "$VIRTUAL_SYMFONY/bin/console" | source
     end
@@ -56,7 +67,7 @@ if test -z "$VIRTUAL_SYMFONY_DISABLE_PROMPT"
         # Save the return status of the last command
         set -l old_status $status
 
-        printf "%s(%s)%s" (set_color -b green white) (basename "$VIRTUAL_SYMFONY") (set_color normal)
+        printf "%s%s (%s)%s" (set_color -b green white) (basename "$VIRTUAL_SYMFONY") "$APP_ENV" (set_color normal)
 
         # Restore the return status of the previous command.
         echo "exit $old_status" | .
