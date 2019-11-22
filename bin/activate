@@ -32,8 +32,8 @@ deactivate () {
     fi
 }
 
-doctrine () {
-    $VIRTUAL_SYMFONY/bin/console doctrine:"$@"
+ccc () {
+    $VIRTUAL_SYMFONY/bin/console cache:clear
 }
 
 e () {

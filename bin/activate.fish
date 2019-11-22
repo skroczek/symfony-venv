@@ -28,6 +28,10 @@ function e  -d "Set application environment"
     end
 end
 
+function ccc  -d "Calls console cache:clear"
+    $VIRTUAL_SYMFONY/bin/console cache:clear
+end
+
 # unset irrelevant variables
 deactivate nondestructive
 

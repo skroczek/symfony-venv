@@ -87,6 +87,25 @@ deactivation.
 website-api (dev) ~/P/website-api $ e prod
 website-api (prod) ~/P/website-api $
 ```
+### Clear cache
+
+The venv adds also a shortcut for `console cache:clear`: `ccc`
+
+```
+website-api (dev) ~/P/website-api $ ccc
+
+ // Clearing the cache for the dev environment with debug true                                                          
+
+ // Warming up cache...                                                                                                 
+
+ // Removing old cache directory...                                                                                     
+
+ // Finished         
+
+ [OK] Cache for the "dev" environment (debug=true) was successfully cleared. 
+
+website-api (dev) ~/P/website-api $
+```
 
 ### Last Step: Deactivate virtual environment
 
